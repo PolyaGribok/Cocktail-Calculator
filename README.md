@@ -35,7 +35,7 @@
 
 1. Клонируйте репозиторий:
 bash
-git clone https://github.com/username/gluhwein-calculator.git
+git clone https://github.com/username/cocktail-calculator.git
 cd gluhwein-calculator
 2. Установите зависимости:
 pip install -r requirements.txt
