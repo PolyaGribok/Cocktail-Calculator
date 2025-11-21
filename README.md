@@ -34,7 +34,7 @@
 ## Установка и запуск
 
 1. Клонируйте репозиторий:
-```bash
+bash
 git clone https://github.com/username/gluhwein-calculator.git
 cd gluhwein-calculator
 2. Установите зависимости:
