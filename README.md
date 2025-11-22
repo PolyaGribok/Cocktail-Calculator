@@ -36,10 +36,10 @@
 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/ваш-username/gluhwein-calculator.git
-cd gluhwein-calculator
+cd gluhwein-calculator'''
 2. Установите зависимость
 ```bash
-pip install Pillow
+pip install Pillow'''
 3. Запустите калькулятор:
 ```bash
-python winter_calculator.py
+python winter_calculator.py'''
