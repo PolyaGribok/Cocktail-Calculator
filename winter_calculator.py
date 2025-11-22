@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 class WinterGluhweinCalculator:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("Калькулятор")
+        self.window.title("Вино & вкусные специи")
         self.window.geometry("350x500")
         self.window.resizable(False, False)
         
@@ -76,7 +76,7 @@ class WinterGluhweinCalculator:
             self.canvas.create_image(0, 0, image=self.bg_image, anchor="nw")
         
         # Заголовок
-        title_label = tk.Label(self.window, text="Калькулятор",
+        title_label = tk.Label(self.window, text="Глинтвейн",
                              font=('Comic Sans MS', 20, 'bold'),
                              fg='#FFD700', bg='#2B0000', pady=15)
         self.canvas.create_window(175, 30, window=title_label)
@@ -101,7 +101,7 @@ class WinterGluhweinCalculator:
     def create_buttons(self):
         """Создает прямоугольные кнопки с промежутками"""
         buttons = [
-            ['C', '⌫', '%', '/'],
+            ['C', '⌫', '√', '/'],
             ['7', '8', '9', '*'],
             ['4', '5', '6', '-'],
             ['1', '2', '3', '+'],
@@ -113,7 +113,7 @@ class WinterGluhweinCalculator:
             'C': {'bg': '#8B0000', 'fg': '#FF6B6B'},
             '⌫': {'bg': '#8B0000', 'fg': '#FFD700'},
             '=': {'bg': '#DAA520', 'fg': '#8B0000'},
-            '%': {'bg': '#8B0000', 'fg': '#FFD700'},
+            '√': {'bg': '#8B4513', 'fg': '#FFD700'},  # Кнопка корня
             '±': {'bg': '#8B0000', 'fg': '#FFD700'},
             '/': {'bg': '#A52A2A', 'fg': '#FFD700'},
             '*': {'bg': '#A52A2A', 'fg': '#FFD700'},
@@ -175,8 +175,8 @@ class WinterGluhweinCalculator:
             self.current_input = self.current_input[:-1]
         elif value == '±':
             self.negate()
-        elif value == '%':
-            self.percentage()
+        elif value == '√':
+            self.square_root()
         else:
             current = self.display.get()
             self.display.delete(0, tk.END)
@@ -198,17 +198,27 @@ class WinterGluhweinCalculator:
         except:
             pass
             
-    def percentage(self):
+    def square_root(self):
+        """Вычисление квадратного корня с обработкой ошибок"""
         try:
-            current = self.display.get()
-            if current:
-                value = float(current)
-                result = value / 100
+            value = self.display.get()
+            if not value:
+                return
+                
+            value = float(value)
+            if value < 0:
+                messagebox.showerror("Ошибка", "Корень из отрицательного числа!")
+            else:
+                result = math.sqrt(value)
+                if result == int(result):
+                    result = int(result)
                 self.display.delete(0, tk.END)
                 self.display.insert(0, str(result))
                 self.current_input = str(result)
-        except:
-            messagebox.showerror("Ошибочка", "Неправильный рецепт для процента!")
+        except ValueError:
+            messagebox.showerror("Ошибка", "Введите число для извлечения корня!")
+        except Exception:
+            messagebox.showerror("Ошибка", "Некорректное значение!")
             
     def key_press(self, event):
         key = event.char
@@ -223,8 +233,8 @@ class WinterGluhweinCalculator:
             self.button_click('⌫')
         elif key == 'n' or key == 'N':
             self.negate()
-        elif key == '%':
-            self.percentage()
+        elif key == 'r' or key == 'R':  # Добавляем горячую клавишу для корня
+            self.square_root()
             
     def calculate(self):
         try:
@@ -239,9 +249,9 @@ class WinterGluhweinCalculator:
             self.display.insert(0, str(result))
             self.current_input = str(result)
         except ZeroDivisionError:
-            messagebox.showerror("Ошибочка", "Можно мы не будем делить на ноль...")
+            messagebox.showerror("Ошибка", "Деление на ноль невозможно!")
         except Exception:
-            messagebox.showerror("Ошибочка", "Неправильный рецепт коктейля!")
+            messagebox.showerror("Ошибка", "Некорректное выражение!")
             
     def bind_keys(self):
         self.window.bind('<Key>', self.key_press)
