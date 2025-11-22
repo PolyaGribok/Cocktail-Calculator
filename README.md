@@ -33,12 +33,14 @@
 
 ## Установка и запуск
 
-1. Клонируйте репозиторий:
-bash
-git clone https://github.com/username/cocktail-calculator.git
-cd gluhwein-calculator
-2. Установите зависимости:
+1. Скачайте файлы проекта:
+   - `winter_calculator.py`
+   - `glintwein.jpg`
+   - `requirements.txt`
+
+2. Установите необходимые библиотеки:
+```bash
 pip install -r requirements.txt
-3. Убедитесь, что файл glintwein.jpg находится в корневой директории проекта
-4. Запустите приложение:
-python winter_calculator.py
+
+3. Запустите программу
+``` python winter_calculator.py
