@@ -33,14 +33,13 @@
 
 ## Установка и запуск
 
-1. Скачайте файлы проекта:
-   - `winter_calculator.py`
-   - `glintwein.jpg`
-   - `requirements.txt`
-
-2. Установите необходимые библиотеки:
+1. Клонируйте репозиторий:
 ```bash
-pip install -r requirements.txt
-
-3. Запустите программу
-``` python winter_calculator.py
+git clone https://github.com/ваш-username/gluhwein-calculator.git
+cd gluhwein-calculator
+2. Установите зависимость
+```bash
+pip install Pillow
+3. Запустите калькулятор:
+```bash
+python winter_calculator.py
