@@ -32,8 +32,9 @@
 - Библиотека Pillow
 
 ## Установка и запуск
+Вводить построчно
 ```bash
-git clone https://github.com/ваш-username/gluhwein-calculator.git
-cd gluhwein-calculator
+git clone https://github.com/PolyaGribok/cocktail-calculator.git
+cd cocktail-calculator
 pip install Pillow
 python winter_calculator.py
