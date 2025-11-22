@@ -32,13 +32,8 @@
 - Библиотека Pillow
 
 ## Установка и запуск
-
-# 1. Клонируйте репозиторий
+```bash
 git clone https://github.com/ваш-username/gluhwein-calculator.git
 cd gluhwein-calculator
-
-# 2. Установите зависимости
 pip install Pillow
-
-# 3. Запустите калькулятор
 python winter_calculator.py
